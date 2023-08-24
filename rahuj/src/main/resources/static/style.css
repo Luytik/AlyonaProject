@@ -1,0 +1,216 @@
+
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+span{
+	text-shadow: 1px 1px #000;
+}
+
+
+
+body{
+    position: absolute;
+}
+
+header {
+    background: rgb(213, 216, 216);
+}
+.mainpage {
+    background: url(./image/fon1.jpg);
+    background-size: cover;
+    height: calc(100% - 100px);
+    margin-bottom: 45px;
+}
+footer {
+ background: #1c2423;
+ position: fixed;
+ bottom: 0px;
+ width: 100%;
+ min-height: 60px;
+ color: #fff;
+}
+.headermenu {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.headermenu__logo img {
+    width: 50px;
+}
+.headermenu__menu {
+    display: flex;
+    gap: 15px;
+    margin: 0 10px;
+}
+.headermenu__item {
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+}
+.articles {
+    display: flex;
+    margin: 0 10px;
+}
+.first {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 10px 0;
+    border-radius: 15px;
+    padding: 15px;
+    display: grid;
+    gap: 15px;
+    align-items: center;
+    grid-template-columns: 1fr 1fr
+}
+.first__textcont {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: end;
+
+}
+.first__textcont h2 {
+    font-size: 2rem;
+}
+.first__textcont p {
+    line-height: 1.4rem;
+}
+.first__textcont input {
+    width: 120px;
+    height: 40px;
+    background: #52aea3;
+    border-radius: 10px;
+}
+.first__imgcont img{
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+}
+.first__imgcont {
+
+}
+.footersection {
+    margin: 0 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/*-----------home page---------------*/
+
+
+.homepagemain {
+    margin: 20px 10px;
+}
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.menu__item {
+    width: 150px;
+    height: 55px;
+    background: #1c342b;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px #082e1c;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+
+.lastcghange {
+    background: rgba(25, 24, 24, 0.7);
+    border-radius: 15px;
+    margin: 25px 15px;
+    height: 80%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.lastcghange__part {
+    background: #52aea3;
+    border-radius: 5px;
+    display: flex;
+    min-height: 3rem;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.lastcghange__item {
+    max-width: 25%;
+}
+
+/*-----------витрати доходи----------*/
+.lastcghange__header {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+.profitzone {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    align-items: center;
+}
+.profitzone input, textarea {
+    border: 1px solid #000;
+}
+.profitzone__btn {
+    width: 8rem;
+    height: 3rem;
+    border-radius: 5px;
+    background: #1c342b;
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.menu__item-active {
+    background: #7fc5bd;
+}
+.vffv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
