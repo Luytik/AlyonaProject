@@ -1,13 +1,11 @@
 const ItemFinans = (table) => {
+    const liMass = [table.date, table.category, table.summ, table.com, table.name];
+    const liItem = liMass.map((item) => <li className="lastcghange__item flex-1 self-center" key={item.id*2+25}>{item}</li>);
+    
     return (
-        <>
-            <li className="lastcghange__item flex-1 self-center">{table.date}</li>
-            <li className="lastcghange__item flex-1 self-center">{table.category}</li>
-            <li className="lastcghange__item flex-1 self-center">{table.summ}</li>
-            <li className="lastcghange__item flex-1 self-center">{table.com}</li>
-            <li className="lastcghange__item flex-1 self-center">{table.name}</li>
-
-        </>
+        <ul className="bg-[#52aea3] flex place-content-around p-3 rounded-xl items-stretch gap-4 items-center">
+            {liItem}
+        </ul>
     )
 
 }

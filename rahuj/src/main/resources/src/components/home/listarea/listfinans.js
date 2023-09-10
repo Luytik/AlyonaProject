@@ -1,21 +1,19 @@
 import ItemFinans from "./itemfinans";
 
 const ListFinans = () => {
-    const table = [{ name: "Доходи", category: "прродукти", summ: "125", date: "12.02.23", com: "lkdf kfd lfdv lfg fgfgfgfg fgbfgf fgbfgbfg" }]
+    
+    const table = [{ name: "Доходи", category: "прродукти", summ: "125", date: "12.11.22", com: "lkdf kfd lfdv lfg fgfgfgfg fgbfgf fgbfgbfg" },
+    { name: "Доходи", category: "прродукти", summ: "125", date: "12.11.22", com: "lkdf kfd lfdfgbfg" },
+    { name: "Доходи", category: "прродукти", summ: "125", date: "12.11.22", com: "lkdf kfdgfgfgfg fgbfgf fgbfgbfg" },
+    { name: "Доходи", category: "прродукти", summ: "125", date: "12.11.22", com: "lkdf kfd lfdv lf" },]
 
-    //const itemlist = table.map((item) => {
-   //     <ItemFinans name={table[item].name} category={table[item].category} summ={table[item].summ} date={table[item].date}></ItemFinans>
-    //    console.log(table[item].name)
-    //}
-    //) //перебирання однакових компонент для виводу
-
+    const tableItem = table.map((item) => <ItemFinans name={item.name} category={item.category} summ={item.summ} date={item.date} com={item.com} key={item.id}></ItemFinans>) //перебирання однакових компонент для виводу меню домашнього
 
 
     return (
-        <ul className="bg-[#52aea3] flex place-content-around p-3 rounded-xl items-stretch gap-4 items-center">
-            <ItemFinans name={table[0].name} category={table[0].category} summ={table[0].summ} date={table[0].date} com={table[0].com}></ItemFinans>
-
-        </ul>
+        <>
+            {tableItem}
+        </>
     )
 
 }
