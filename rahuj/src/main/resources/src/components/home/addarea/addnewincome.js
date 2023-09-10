@@ -2,6 +2,8 @@ import ButtonHome from "../listarea/buttonHome";
 import ListFinans from "../listarea/listfinans";
 
 const AddNewIncome = () => {
+    const getCategory = fetch("http://localhost:8080/api/categories/expenditureCategory");
+    getCategory.then((data) => {console.log(data)});
     return (
         <div className="flex flex-col bg-[#7b8a8a] p-5 m-5 rounded-2xl gap-5">
             <div className="text-center text-4xl text-light-green">Всі доходи</div>
