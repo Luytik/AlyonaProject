@@ -33,7 +33,7 @@ bld/
 [Ll]ogs/
 
 # ignore node-modules
-src\main\resources\static\node_modules
+src\main\resources\node_modules
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
