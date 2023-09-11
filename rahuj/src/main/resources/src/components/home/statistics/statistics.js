@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import MyComponent from "./testpost";
 
 function Statistics() {
     const [error, setError] = useState(null);
@@ -29,15 +30,15 @@ function Statistics() {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div>Загрузка...</div>;
     } else {
       return (
         <>
-        <input className=" border-2" type="text"></input>
-        <button className="bg-green h-14 w-24">add</button>
+          <MyComponent/>
           {items.map(item => (
             <div>{item.expenditureCategoryDTO}</div>
-          ))}
+          ))
+          }
         </>
       );
     }
