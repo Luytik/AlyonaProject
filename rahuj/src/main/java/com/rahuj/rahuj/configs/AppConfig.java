@@ -3,8 +3,6 @@ package com.rahuj.rahuj.configs;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.rahuj.rahuj.models.ExpenditureCategory;
 import com.rahuj.rahuj.services.ExpenditureCategoryService;
 import com.rahuj.rahuj.services.RevenueCategoryService;
 
@@ -18,13 +16,13 @@ public class AppConfig {
             @Override
             public void run(String...strings) throws Exception {
                 //Add few expenditure categories
-                expenditureCategoryService.addCategory("Комунальні платежі");
-                expenditureCategoryService.addCategory("Покупка");
-                expenditureCategoryService.addCategory("Оплата за інтернет");
+                expenditureCategoryService.addNewCategory("Комунальні платежі");
+                expenditureCategoryService.addNewCategory("Покупка");
+                expenditureCategoryService.addNewCategory("Оплата за інтернет");
 
-                revenueCategoryService.addCategory("Заробітня плата");
-                revenueCategoryService.addCategory("Продаж");
-                revenueCategoryService.addCategory("Послуги");
+                revenueCategoryService.addNewCategory("Заробітня плата");
+                revenueCategoryService.addNewCategory("Продаж");
+                revenueCategoryService.addNewCategory("Послуги");
 
             }
         };

@@ -1,11 +1,11 @@
 package com.rahuj.rahuj.models;
 
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -16,19 +16,24 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class RevenueCategory {
+public class Client {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
+    private String clientname;
+    private String email;
+    private String password;
 
-    @Column(nullable = false, unique = true)
-    private String revenueCategory;
+    @OneToMany(mappedBy = "user")
+    private List<Expenditure> expenditureList;
 
-    @OneToMany(mappedBy = "revenueCategory")
-    private Set<Revenue> revenueList;
+    @OneToMany(mappedBy = "user")
+    private List<Revenue> revenueList;
+    
 
-    public RevenueCategory(String category){
-        revenueCategory = category;
-    }
+
+
+
 }
