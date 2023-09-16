@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MyComponent from "./testpost";
+import ModalWind from "../../testmodal";
 
 function Statistics() {
     const [error, setError] = useState(null);
@@ -39,6 +40,7 @@ function Statistics() {
             <div>{item.expenditureCategoryDTO}</div>
           ))
           }
+          <ModalWind/>
         </>
       );
     }
