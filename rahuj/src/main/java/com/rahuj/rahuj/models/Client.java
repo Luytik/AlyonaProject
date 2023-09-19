@@ -8,12 +8,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,24 +32,19 @@ public class Client implements UserDetails{
     @Column(unique = true, nullable = true)
     private String email;
     private String password;
-    public Boolean locked;
-    public Boolean enable;
+    public Boolean locked = false;
+    public Boolean enable = false;
 
-    public Client(String login, String email, String password, Boolean locked, Boolean enable,
-            List<Expenditure> expenditureList, List<Revenue> revenueList) {
+    public Client(String login, String email, String password) {
         this.login = login;
         this.email = email;
         this.password = password;
-        this.locked = locked;
-        this.enable = enable;
-        this.expenditureList = expenditureList;
-        this.revenueList = revenueList;
     }
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "client")
     private List<Expenditure> expenditureList;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "client")
     private List<Revenue> revenueList;
 
     @Override
@@ -60,7 +55,7 @@ public class Client implements UserDetails{
 
     @Override
     public String getUsername() {
-        return login;
+        return email;
     }
 
     @Override

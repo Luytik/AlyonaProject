@@ -4,12 +4,13 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +26,7 @@ public class Revenue {
     private Long id;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Column(name = "when")
     private Date date;
 
     @ManyToOne
@@ -32,15 +34,15 @@ public class Revenue {
     private RevenueCategory revenueCategory;
 
     @ManyToOne
-    @JoinColumn(name = "User_id")
-    private Client user;
+    @JoinColumn(name = "Client_id")
+    private Client client;
 
     private Double value;
     private String description;
-    public Revenue(Date date, RevenueCategory revenueCategory, Client user, Double value, String description) {
+    public Revenue(Date date, RevenueCategory revenueCategory, Client client, Double value, String description) {
         this.date = date;
         this.revenueCategory = revenueCategory;
-        this.user = user;
+        this.client = client;
         this.value = value;
         this.description = description;
     }

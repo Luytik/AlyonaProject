@@ -9,7 +9,7 @@ import com.rahuj.rahuj.dto.RevenueCategoryDTO;
 import com.rahuj.rahuj.models.RevenueCategory;
 import com.rahuj.rahuj.repositories.RevenueCategoryRepository;
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 
 @Service
 public class RevenueCategoryService {

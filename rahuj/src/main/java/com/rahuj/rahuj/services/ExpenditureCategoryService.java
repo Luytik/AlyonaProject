@@ -7,7 +7,7 @@ import com.rahuj.rahuj.dto.ExpenditureCategoryDTO;
 import com.rahuj.rahuj.models.ExpenditureCategory;
 import com.rahuj.rahuj.repositories.ExpenditureCategoryRepository;
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 
 @Service
 public class ExpenditureCategoryService {
