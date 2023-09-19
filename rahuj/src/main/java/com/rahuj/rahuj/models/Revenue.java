@@ -32,18 +32,16 @@ public class Revenue {
     private RevenueCategory revenueCategory;
 
     @ManyToOne
-    @JoinColumn(name = "User_id")
-    private Client user;
+    @JoinColumn(name = "client_id")
+    private Client client;
 
-    private Double value;
+    private Double money;
     private String description;
-    public Revenue(Date date, RevenueCategory revenueCategory, Client user, Double value, String description) {
+    public Revenue(Date date, RevenueCategory revenueCategory, Client client, Double money, String description) {
         this.date = date;
         this.revenueCategory = revenueCategory;
-        this.user = user;
-        this.value = value;
+        this.client = client;
+        this.money = money;
         this.description = description;
-    }
-
-    
+    }    
 }

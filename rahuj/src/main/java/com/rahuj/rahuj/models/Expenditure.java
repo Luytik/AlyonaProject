@@ -32,19 +32,17 @@ public class Expenditure {
     private ExpenditureCategory expenditureCategory;
 
     @ManyToOne
-    @JoinColumn(name = "User_id")
-    private Client user;
+    @JoinColumn(name = "client_id")
+    private Client client;
 
-    private Double value;
+    private Double money;
     private String description;
-    public Expenditure(Date date, ExpenditureCategory expenditureCategory, Client user, Double value,
+    public Expenditure(Date date, ExpenditureCategory expenditureCategory, Client client, Double money,
             String description) {
         this.date = date;
         this.expenditureCategory = expenditureCategory;
-        this.user = user;
-        this.value = value;
+        this.client = client;
+        this.money = money;
         this.description = description;
-    }
-
-    
+    }    
 }
