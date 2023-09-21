@@ -25,7 +25,7 @@ function GetSelectCategory() {
 
 
 
-    
+
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -33,15 +33,11 @@ function GetSelectCategory() {
     } else {
         return (
             <>
-                <select name="category" className="lastcghange__item flex-1 self-center">
-                    <option value="обери категоррію">Обери категорію</option>
-                    {items.map((item, index) => (
-                        <option value={item.expenditureCategoryDTO} key={index + "b"}>{item.expenditureCategoryDTO}</option>
-                    ))
-                    }
-                    <option value="додати нову категорію" onClick={() => document.getElementById('my_modal_1').showModal()}>Додати нову категорію</option>
+                {items.map((item, index) => (
+                    <li className="border-2 p-3 hover:border-4 cursor-pointer" value={item.expenditureCategoryDTO} key={index + "b"} onClick={()=> {document.querySelector("#valueCategoryCosts").value = item.expenditureCategoryDTO}} >{item.expenditureCategoryDTO}</li>
+                ))
+                }
 
-                </select>
 
             </>
         );

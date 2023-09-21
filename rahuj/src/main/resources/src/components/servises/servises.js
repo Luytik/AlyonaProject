@@ -4,6 +4,11 @@ class Servises {
         const data = await fetch(`${this._link}expenditureCategory`);
         return await data.json();
     }
+    
+    async getCategoryCome () {
+        const data = await fetch(`${this._link}revenueCategory`);
+        return await data.json();
+    }
 }
 
 export default Servises;
