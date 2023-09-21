@@ -25,6 +25,11 @@ public class ExpenditureCategoryService {
     }
 
     @Transactional
+    public void addNewCategory(ExpenditureCategory category) throws Exception{
+        repository.save(category);
+    }
+
+    @Transactional
     public void deleteCategory(ExpenditureCategory category){
         repository.delete(category);
     }
