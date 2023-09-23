@@ -22,7 +22,7 @@ public class RevenueDTO {
 
     public static RevenueDTO of(Revenue revenue) {
         RevenueDTO revenueDTO = new RevenueDTO();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date date = revenue.getDate();
         revenueDTO.setDate(dateFormat.format(date));
         revenueDTO.setDescription(revenue.getDescription());
@@ -35,7 +35,7 @@ public class RevenueDTO {
     public static Revenue from(RevenueDTO revenueDTO) {
         Revenue revenue = new Revenue();
         try {
-            Date date = new SimpleDateFormat("dd.MM.yyyy").parse(revenueDTO.getDate());
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(revenueDTO.getDate());
             revenue.setDate(date);
         } catch (Exception e) {
 

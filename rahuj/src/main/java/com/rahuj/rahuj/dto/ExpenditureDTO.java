@@ -26,7 +26,7 @@ public class ExpenditureDTO {
 
     public static ExpenditureDTO of(Expenditure expenditure) {
         ExpenditureDTO expenditureDTO = new ExpenditureDTO();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date date = expenditure.getDate();
         expenditureDTO.setDate(dateFormat.format(date));
         expenditureDTO.setDescription(expenditure.getDescription());
