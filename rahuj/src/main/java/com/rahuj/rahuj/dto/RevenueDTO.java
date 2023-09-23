@@ -22,7 +22,7 @@ public class RevenueDTO {
 
     public static RevenueDTO of(Revenue revenue) {
         RevenueDTO revenueDTO = new RevenueDTO();
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = revenue.getDate();
         revenueDTO.setDate(dateFormat.format(date));
         revenueDTO.setDescription(revenue.getDescription());

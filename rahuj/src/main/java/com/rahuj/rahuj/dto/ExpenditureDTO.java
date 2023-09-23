@@ -26,7 +26,7 @@ public class ExpenditureDTO {
 
     public static ExpenditureDTO of(Expenditure expenditure) {
         ExpenditureDTO expenditureDTO = new ExpenditureDTO();
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = expenditure.getDate();
         expenditureDTO.setDate(dateFormat.format(date));
         expenditureDTO.setDescription(expenditure.getDescription());
@@ -40,7 +40,7 @@ public class ExpenditureDTO {
     public static Expenditure from(ExpenditureDTO expenditureDTO){
         Expenditure expenditure = new Expenditure();
         try {
-            Date date = new SimpleDateFormat("dd.MM.yyyy").parse(expenditureDTO.getDate());
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(expenditureDTO.getDate());
             expenditure.setDate(date);
         } catch (Exception e) {
 
