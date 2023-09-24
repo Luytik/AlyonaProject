@@ -13,6 +13,10 @@ class Servises {
         const data = await fetch(`${this._link}expenditure/`);
         return await data.json();
     }
+    async getListCome () {
+        const data = await fetch(`${this._link}revenue/`);
+        return await data.json();
+    }
 }
 
 export default Servises;
