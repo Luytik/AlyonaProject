@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.rahuj.rahuj.models.Revenue;
+import com.rahuj.rahuj.services.ConstsFormatDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +24,7 @@ public class RevenueDTO {
 
     public static RevenueDTO of(Revenue revenue) {
         RevenueDTO revenueDTO = new RevenueDTO();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat = new SimpleDateFormat(ConstsFormatDate.getFormatDate());
         Date date = revenue.getDate();
         revenueDTO.setDate(dateFormat.format(date));
         revenueDTO.setDescription(revenue.getDescription());
@@ -35,7 +37,7 @@ public class RevenueDTO {
     public static Revenue from(RevenueDTO revenueDTO) {
         Revenue revenue = new Revenue();
         try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(revenueDTO.getDate());
+            Date date = new SimpleDateFormat(ConstsFormatDate.getFormatDate()).parse(revenueDTO.getDate());
             revenue.setDate(date);
         } catch (Exception e) {
 

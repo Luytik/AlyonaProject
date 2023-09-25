@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rahuj.rahuj.dto.ExpenditureDTO;
+import com.rahuj.rahuj.services.ConstsFormatDate;
 import com.rahuj.rahuj.services.ExpenditureService;
 
 import lombok.AllArgsConstructor;
@@ -19,21 +20,36 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api/expenditure/")
 @AllArgsConstructor
 public class ExpenditureRestController {
-    
+
     private final ExpenditureService expenditureService;
 
     @PostMapping
-    public ResponseEntity<?> addExpenditure(@ModelAttribute ExpenditureDTO expenditureDTO){
-        try{
-            expenditureService.saveExpenditure(expenditureDTO);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception e) {
+    public ResponseEntity<?> addExpenditure(@ModelAttribute ExpenditureDTO expenditureDTO) {
+        if (isApplicableToSave(expenditureDTO)) {
+            try {
+                expenditureService.saveExpenditure(expenditureDTO);
+                return new ResponseEntity<>(HttpStatus.CREATED);
+            } catch (Exception e) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+        } else
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
     }
 
     @GetMapping
-    public List<ExpenditureDTO> getAllExpCategoriesAsDto(){
+    public List<ExpenditureDTO> getAllExpCategoriesAsDto() {
         return expenditureService.getAllExpCategoriesAsDto();
+    }
+
+    private boolean isApplicableToSave(ExpenditureDTO expenditureDTO) {
+        if (!ConstsFormatDate.isDateCorrect(expenditureDTO.getDate()))
+            return false;
+        if (expenditureDTO.getExpenditureCategoryDTO() == null)
+            return false;
+        if (!(expenditureDTO.getMoney() instanceof Double))
+            return false;
+        if (expenditureDTO.getMoney() == null)
+            return false;
+        return true;
     }
 }

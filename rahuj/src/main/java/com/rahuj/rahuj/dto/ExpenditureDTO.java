@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.rahuj.rahuj.models.Client;
 import com.rahuj.rahuj.models.Expenditure;
+import com.rahuj.rahuj.services.ConstsFormatDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +27,7 @@ public class ExpenditureDTO {
 
     public static ExpenditureDTO of(Expenditure expenditure) {
         ExpenditureDTO expenditureDTO = new ExpenditureDTO();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat = new SimpleDateFormat(ConstsFormatDate.getFormatDate());
         Date date = expenditure.getDate();
         expenditureDTO.setDate(dateFormat.format(date));
         expenditureDTO.setDescription(expenditure.getDescription());
@@ -40,7 +41,7 @@ public class ExpenditureDTO {
     public static Expenditure from(ExpenditureDTO expenditureDTO){
         Expenditure expenditure = new Expenditure();
         try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(expenditureDTO.getDate());
+            Date date = new SimpleDateFormat(ConstsFormatDate.getFormatDate()).parse(expenditureDTO.getDate());
             expenditure.setDate(date);
         } catch (Exception e) {
 

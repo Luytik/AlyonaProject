@@ -4,6 +4,9 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.rahuj.rahuj.services.ConstsFormatDate;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,17 +27,19 @@ public class Expenditure {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = false)
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "ExpenditureCategory_id")
+    @JoinColumn(name = "ExpenditureCategory_id", nullable = false)
     private ExpenditureCategory expenditureCategory;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
+    @Column(nullable = false)
     private Double money;
     private String description;
     public Expenditure(Date date, ExpenditureCategory expenditureCategory, Client client, Double money,
