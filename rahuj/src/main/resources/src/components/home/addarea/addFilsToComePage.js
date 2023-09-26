@@ -1,8 +1,7 @@
 import { useState } from "react";
 import GetComeCategory from "./getComeCategory";
-import GetCostCategory from "./getCostCategory";
 
-function AddFilsAll(props) {
+function AddFilsToComePage() {
   
     const [inputs, setInputs] = useState({});
 
@@ -17,7 +16,7 @@ function AddFilsAll(props) {
         console.log(inputs);
         const formData = new FormData(event.target);
 
-        fetch(`${props.link}`, {
+        fetch('http://localhost:8080/api/revenue/', {
             method: 'POST',
             body: formData
         })
@@ -34,7 +33,7 @@ function AddFilsAll(props) {
                 <input
                     className="lastcghange__item flex-1 self-center"
                     type="date"
-                    name ="date"
+                    name="date"
                     value={inputs.date || ""}
                     onChange={handleChange}
                 />
@@ -44,8 +43,8 @@ function AddFilsAll(props) {
                     onClick={() => { document.querySelector("#comeCatHiden").className = "flex gap-2 flex-wrap" }}
                     placeholder="категорія"
                     type="text"
-                    name={props.category}
-                    value={inputs.expenditureCategoryDTO}
+                    name="revenueCategoryDTO"
+                    value={inputs.revenueCategoryDTO}
                     onChange ={handleChange}
                 />
                 <input
@@ -70,12 +69,11 @@ function AddFilsAll(props) {
                 />
             </form>
             <div className="hidden" id="comeCatHiden">
-                
-                <GetCostCategory/> {/* неможу через пропс змінити на - getcomecategory*/}
+                <GetComeCategory/>
             </div>
             
         </div>
     )
 }
 
-export default AddFilsAll;
+export default AddFilsToComePage;

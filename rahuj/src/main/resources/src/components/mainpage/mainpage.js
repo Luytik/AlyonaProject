@@ -4,8 +4,8 @@ import mainimage from '../../image/1-default.jpg';
 
 function Mainpage() {
     return (
-        <main className="mainpage bg-cover">
-            <div className="container px-4 mx-auto min-h-full py-5">
+        <main className="mainpage h-full">
+            <div className="container px-4 mx-auto py-5">
                 <div className="articles p-5 rounded-2xl">
                     <article className="flex flex-row gap-7">
                         <div className="basis-1/2">

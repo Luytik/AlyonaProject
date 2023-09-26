@@ -12,20 +12,23 @@ import Statistics from './components/home/statistics/statistics';
 function App() {
   return (
     <Router>
-      <div className="App relative">
+      <div className="h-screen grid auto-rows-fr gap-0">
         <Header></Header>
-        <Routes>
-          <Route path='/' element={<Mainpage />} />
-          <Route path='/home' element={<Home />}>
-            <Route index element={<HomeIndex />} />
+        <div className='row-[span_7_/_span_7] overflow-auto'>
+          <Routes>
+            <Route path='/' element={<Mainpage />} />
+            <Route path='/home' element={<Home />}>
+              <Route index element={<HomeIndex />} />
 
-            <Route path="/home/new_income" element={<AddNewIncome />} />
-            <Route path="/home/new_costs" element={<AddNewCosts/>} />
-            <Route path="/home/new_statistics" element={<Statistics/>} />
+              <Route path="/home/new_income" element={<AddNewIncome />} />
+              <Route path="/home/new_costs" element={<AddNewCosts />} />
+              <Route path="/home/new_statistics" element={<Statistics />} />
 
 
-          </Route>
-        </Routes>
+            </Route>
+          </Routes>
+        </div>
+
         <Footer></Footer>
       </div>
     </Router>

@@ -3,8 +3,8 @@ import logo from '../../image/logo1.png'
 
 function Header() {
     return (
-        <header className="bg-[#D5D8D8] font-sans font-medium uppercase text-lime-950 text-base">
-            <div className="container px-4 mx-auto min-h-full py-5">
+        <header className="bg-[#D5D8D8] font-sans font-medium uppercase text-lime-950 text-base row-[span_1_/_span_2]">
+            <div className="container px-4 mx-auto py-5">
                 <div className="flex flex-row gap-7 justify-stretch">
                     <div className="flex-none">
                         <img className='h-16' src={logo} alt="logo" />

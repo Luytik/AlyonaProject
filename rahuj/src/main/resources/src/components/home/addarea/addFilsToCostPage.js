@@ -1,7 +1,7 @@
 import { useState } from "react";
-import GetComeCategory from "./getComeCategory";
+import GetCostCategory from "./getCostCategory";
 
-function AddFils() {
+function AddFilsToCostPage() {
   
     const [inputs, setInputs] = useState({});
 
@@ -69,11 +69,11 @@ function AddFils() {
                 />
             </form>
             <div className="hidden" id="comeCatHiden">
-                <GetComeCategory></GetComeCategory>
+                <GetCostCategory></GetCostCategory>
             </div>
             
         </div>
     )
 }
 
-export default AddFils;
+export default AddFilsToCostPage;

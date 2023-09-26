@@ -3,11 +3,11 @@ import footerlogo from "../../image/logo2.png";
 function Footer() {
     return (
         
-        <footer className="bg-[#1c2423] w-screen text-[#fff]">
-            <div className="container px-4 mx-auto min-h-full py-5">
+        <footer className="bg-[#1c2423] text-[#fff] row-[span_1_/_span_2]">
+            <div className="container px-4 mx-auto">
                 <div className="flex flex-row gap-7 justify-stretch">
                     <div className="logo">
-                        <img src={footerlogo} alt="logo"/>
+                        <img className="" src={footerlogo} alt="logo"/>
                     </div>
                     <ul className="">
                         <li>adasda</li>
