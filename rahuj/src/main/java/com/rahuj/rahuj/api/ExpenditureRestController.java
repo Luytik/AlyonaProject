@@ -46,6 +46,8 @@ public class ExpenditureRestController {
             return false;
         if (expenditureDTO.getExpenditureCategoryDTO() == null)
             return false;
+        if (expenditureDTO.getExpenditureCategoryDTO().getExpenditureCategoryDTO().length() < 1)
+            return false;
         if (!(expenditureDTO.getMoney() instanceof Double))
             return false;
         if (expenditureDTO.getMoney() == null)
