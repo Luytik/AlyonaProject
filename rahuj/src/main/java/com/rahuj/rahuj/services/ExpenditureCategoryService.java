@@ -2,9 +2,7 @@ package com.rahuj.rahuj.services;
 
 import java.util.List;
 import java.util.ArrayList;
-
 import org.springframework.stereotype.Service;
-
 import com.rahuj.rahuj.dto.ExpenditureCategoryDTO;
 import com.rahuj.rahuj.models.ExpenditureCategory;
 import com.rahuj.rahuj.repositories.ExpenditureCategoryRepository;
@@ -21,8 +19,13 @@ public class ExpenditureCategoryService {
     }
 
     @Transactional
-    public void addCategory(String name){
+    public void addNewCategory(String name) throws Exception{
         ExpenditureCategory category = new ExpenditureCategory(name);
+        repository.save(category);
+    }
+
+    @Transactional
+    public void addNewCategory(ExpenditureCategory category) throws Exception{
         repository.save(category);
     }
 

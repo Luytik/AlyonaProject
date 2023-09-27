@@ -20,8 +20,13 @@ public class RevenueCategoryService {
     }
 
     @Transactional
-    public void addCategory(String name){
+    public void addNewCategory(String name) throws Exception{
         RevenueCategory category = new RevenueCategory(name);
+        repository.save(category);
+    }
+
+    @Transactional
+    public void addNewCategory(RevenueCategory category) throws Exception{
         repository.save(category);
     }
 
