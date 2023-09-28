@@ -11,9 +11,9 @@ function Header() {
                     </div>
                     <ul className="flex-1 flex flex-row place-content-end gap-7 place-items-center">
                         <li className="headermenu__item "><Link to="/">головна</Link></li>
-                        <li className="headermenu__item"><Link to="/page1">фінанси</Link></li>
-                        <li className="headermenu__item"><Link to="/page2">форум</Link></li>
-                        <li className="headermenu__item"><Link to="/page3">про нас</Link></li>
+                        <li className="headermenu__item"><Link to="/finans">фінанси</Link></li>
+                        <li className="headermenu__item"><Link to="/faq">Питання/відповідь</Link></li>
+                        <li className="headermenu__item"><Link to="/aboutus">про нас</Link></li>
                         <li className="headermenu__item"><Link to="/home">Мій кабінет</Link></li>
                         
                     </ul>

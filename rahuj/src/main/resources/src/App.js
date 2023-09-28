@@ -8,6 +8,9 @@ import AddNewIncome from './components/home/addarea/addnewincome';
 import HomeIndex from './components/home/listarea/homeindex';
 import AddNewCosts from './components/home/addarea/addnewcosts';
 import Statistics from './components/home/statistics/statistics';
+import FinansPage from './components/finans/finansPage';
+import FAQ from './components/faq/faqPage';
+import AboutUs from './components/aboutus/aboutUsPage';
 
 function App() {
   return (
@@ -17,6 +20,10 @@ function App() {
         <div className='row-[span_7_/_span_7] overflow-auto'>
           <Routes>
             <Route path='/' element={<Mainpage />} />
+            <Route path='/finans' element={<FinansPage />} />
+            <Route path='/faq' element={<FAQ />} />
+            <Route path='/aboutus' element={<AboutUs />} />
+
             <Route path='/home' element={<Home />}>
               <Route index element={<HomeIndex />} />
 
@@ -24,8 +31,8 @@ function App() {
               <Route path="/home/new_costs" element={<AddNewCosts />} />
               <Route path="/home/new_statistics" element={<Statistics />} />
 
-
             </Route>
+
           </Routes>
         </div>
 
