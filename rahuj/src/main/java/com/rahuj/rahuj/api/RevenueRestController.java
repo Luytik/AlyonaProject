@@ -46,6 +46,8 @@ public class RevenueRestController {
             return false;
         if (revenueDTO.getRevenueCategoryDTO() == null)
             return false;
+        if (revenueDTO.getRevenueCategoryDTO().getRevenueCategoryDTO().length() < 1)
+            return false;
         if (!(revenueDTO.getMoney() instanceof Double))
             return false;
         if (revenueDTO.getMoney() == null)
