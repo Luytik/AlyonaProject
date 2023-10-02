@@ -11,6 +11,7 @@ import Statistics from './components/home/statistics/statistics';
 import FinansPage from './components/finans/finansPage';
 import FAQ from './components/faq/faqPage';
 import AboutUs from './components/aboutus/aboutUsPage';
+import LoginPage from './components/loginpage/logippage';
 
 function App() {
   return (
@@ -24,14 +25,18 @@ function App() {
             <Route path='/faq' element={<FAQ />} />
             <Route path='/aboutus' element={<AboutUs />} />
 
-            <Route path='/home' element={<Home />}>
-              <Route index element={<HomeIndex />} />
+            <Route path='/login' element={<LoginPage/>}></Route>
+              <Route path='/home' element={<Home />}>
+                <Route index element={<HomeIndex />} />
 
-              <Route path="/home/new_income" element={<AddNewIncome />} />
-              <Route path="/home/new_costs" element={<AddNewCosts />} />
-              <Route path="/home/new_statistics" element={<Statistics />} />
+                <Route path="/home/new_income" element={<AddNewIncome />} />
+                <Route path="/home/new_costs" element={<AddNewCosts />} />
+                <Route path="/home/new_statistics" element={<Statistics />} />
 
-            </Route>
+              </Route>
+
+            
+
 
           </Routes>
         </div>

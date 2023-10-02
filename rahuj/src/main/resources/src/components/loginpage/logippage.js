@@ -1,7 +1,8 @@
-import ButtonHome from "./buttonHome"
-const HomeLogin = () => {
+import ButtonHome from "../home/listarea/buttonHome"
+const LoginPage = () => {
     return (
         <>
+        <div className="bg-[#9db0b0] p-5 my-5 rounded-2xl gap-5 w-1/2 mx-auto">
         <div className="my-5 text-center font-bold text-lg">Авторизуватись:</div>
         <form className="flex flex-col gap-3">
             <div><span> Ваш Email: </span><input name="email" type="email"/></div>
@@ -19,7 +20,8 @@ const HomeLogin = () => {
             
 
         </form>
+        </div>
         </>
     )
 }
- export default HomeLogin;
+ export default LoginPage;

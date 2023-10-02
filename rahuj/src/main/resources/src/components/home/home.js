@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import ButtonHome from "./listarea/buttonHome";
 
 function Home() {
-    const homeBtn = [{ name: "доходи", link: "/home/new_income" }, { name: "витрати", link: "/home/new_costs" }, { name: "статистика", link: "/home/new_statistics" }]; // дані для домашнього меню
+    const homeBtn = [{ name: "доходи", link: "/home/new_income" }, { name: "витрати", link: "/home/new_costs" }, { name: "статистика", link: "/home/new_statistics" }, { name: "login", link: "/login" }]; // дані для домашнього меню
     const listBtn = homeBtn.map((item, index) => <ButtonHome name={item.name} link={item.link} key={index + "m"}></ButtonHome>) //перебирання однакових компонент для виводу меню домашнього
 
     return (
