@@ -17,7 +17,7 @@ public class ClientDTO {
 
     public static ClientDTO of(Client client){
         ClientDTO clientDTO = new ClientDTO();
-        clientDTO.setLogin(client.getLogin());
+        clientDTO.setLogin(client.getEmail());
         clientDTO.setPassword(client.getPassword());
         return clientDTO;
     }
