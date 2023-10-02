@@ -20,11 +20,22 @@ public class RegistrationService {
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
 
-    public String register(RegistrationRequest request) {
+    public ErrorHandler register(RegistrationRequest request) {
+
+        ErrorHandler errorHandler = new ErrorHandler();
+        boolean isClientExist = clientService.isClientExist(request.getEmail());
         boolean isValidEmail = emailValidator.test(request.getEmail());
 
-        if (!isValidEmail) {
-            throw new IllegalStateException("email not valid");
+        if(isClientExist){
+            errorHandler.setError(true);
+            errorHandler.setText("User is exist");
+            return errorHandler;
+        }
+
+        if(!isValidEmail){
+            errorHandler.setError(true);
+            errorHandler.setText("Wrong email");
+            return errorHandler;
         }
 
         String token = clientService.signUpClient(
@@ -37,7 +48,9 @@ public class RegistrationService {
         emailSender.send(
                 request.getEmail(),
                 buildEmail(request.getLogin(), link));
-        return token;
+                
+        errorHandler.setError(false);
+        return errorHandler;
     }
 
     @Transactional

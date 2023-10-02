@@ -33,7 +33,7 @@ public class Client implements UserDetails{
     private String email;
     private String password;
     private Boolean locked = false;
-    private Boolean enable = false;
+    private Boolean enable = true;
 
     public Client(String login, String email, String password) {
         this.login = login;
@@ -70,7 +70,7 @@ public class Client implements UserDetails{
 
     @Override
     public boolean isAccountNonLocked() {
-        return !locked;
+        return true;
     }
 
     @Override

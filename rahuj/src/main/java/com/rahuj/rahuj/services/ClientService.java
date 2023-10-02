@@ -13,6 +13,7 @@ import com.rahuj.rahuj.models.Client;
 import com.rahuj.rahuj.models.ConfirmationToken;
 import com.rahuj.rahuj.repositories.ClientRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -32,6 +33,7 @@ public class ClientService implements UserDetailsService {
                         String.format(USER_NOT_FOUND_MSG, email)));
     }
 
+    @Transactional
     public String signUpClient(Client client) {
         boolean clientExist = clientRepository
                 .findByEmail(client.getEmail()).isPresent();
@@ -62,5 +64,9 @@ public class ClientService implements UserDetailsService {
     }
         public int enableClient(String email){
                 return clientRepository.enableClient(email);
+        }
+
+        public boolean isClientExist(String email){
+              return clientRepository.isClientExist(email);
         }
 }

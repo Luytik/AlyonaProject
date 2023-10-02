@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.rahuj.rahuj.dto.ExpenditureDTO;
 import com.rahuj.rahuj.dto.RevenueDTO;
@@ -13,6 +14,7 @@ import com.rahuj.rahuj.models.Expenditure;
 import com.rahuj.rahuj.models.ExpenditureCategory;
 import com.rahuj.rahuj.models.Revenue;
 import com.rahuj.rahuj.models.RevenueCategory;
+import com.rahuj.rahuj.services.ClientService;
 import com.rahuj.rahuj.services.ExpenditureCategoryService;
 import com.rahuj.rahuj.services.ExpenditureService;
 import com.rahuj.rahuj.services.RevenueCategoryService;
@@ -25,12 +27,15 @@ public class AppConfig {
     public CommandLineRunner runner(final ExpenditureCategoryService expenditureCategoryService,
                                     final RevenueCategoryService revenueCategoryService,
                                     final ExpenditureService expenditureService, 
-                                    final RevenueService revenueService){
+                                    final RevenueService revenueService,
+                                    final ClientService clientService){
         return new CommandLineRunner() {
             @Override
             public void run(String...strings) throws Exception {
 
-                Client client = new Client();
+                Client client = new Client("vadik", "lala@com.ua", "pass");
+                clientService.signUpClient(client);
+
                 //Add few expenditure categories
                 ExpenditureCategory eCat1 = new ExpenditureCategory("Комунальні платежі");
                 expenditureCategoryService.addNewCategory(eCat1);
