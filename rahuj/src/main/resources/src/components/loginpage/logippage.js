@@ -1,9 +1,12 @@
 import ButtonHome from "../home/listarea/buttonHome"
+import LoginForm from "./loginForm";
+import RegistrationForm from "./registrationForm";
 const LoginPage = () => {
     return (
         <>
         <div className="bg-[#9db0b0] p-5 my-5 rounded-2xl gap-5 w-1/2 mx-auto">
-        <div className="my-5 text-center font-bold text-lg">Авторизуватись:</div>
+
+        {/* <div className="my-5 text-center font-bold text-lg">Авторизуватись:</div>
         <form className="flex flex-col gap-3">
             <div><span> Ваш Email: </span><input name="email" type="email"/></div>
             <div><span> Ваш Login: </span><input name="name" type="text"/></div>
@@ -19,7 +22,11 @@ const LoginPage = () => {
             <div className="w-min mx-auto col-span-2"><ButtonHome name = "зареєструватись"></ButtonHome></div>
             
 
-        </form>
+        </form> */}
+        <div className="my-5 text-center font-bold text-lg">Зареєструватись:</div>
+        <RegistrationForm/>
+        <div className="my-5 text-center font-bold text-lg">Авторизуватись:</div>
+        <LoginForm/>
         </div>
         </>
     )
