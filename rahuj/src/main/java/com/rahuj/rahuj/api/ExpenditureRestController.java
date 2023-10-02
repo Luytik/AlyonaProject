@@ -1,5 +1,6 @@
 package com.rahuj.rahuj.api;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rahuj.rahuj.dto.ExpenditureDTO;
+import com.rahuj.rahuj.models.Client;
+import com.rahuj.rahuj.repositories.ClientRepository;
 import com.rahuj.rahuj.services.ConstsFormatDate;
 import com.rahuj.rahuj.services.ExpenditureService;
 
@@ -22,6 +25,7 @@ import lombok.AllArgsConstructor;
 public class ExpenditureRestController {
 
     private final ExpenditureService expenditureService;
+    private final ClientRepository clientRepository;
 
     @PostMapping
     public ResponseEntity<?> addExpenditure(@ModelAttribute ExpenditureDTO expenditureDTO) {
@@ -37,8 +41,9 @@ public class ExpenditureRestController {
     }
 
     @GetMapping
-    public List<ExpenditureDTO> getAllExpCategoriesAsDto() {
-        return expenditureService.getAllExpCategoriesAsDto();
+    public List<ExpenditureDTO> getAllExpCategoriesAsDto(Principal principal) {
+        Client client = clientRepository.findByLogin(principal.getName());
+        return expenditureService.gExpenditureDTOsByClient(client);
     }
 
     private boolean isApplicableToSave(ExpenditureDTO expenditureDTO) {

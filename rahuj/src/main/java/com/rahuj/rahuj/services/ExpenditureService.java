@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import com.rahuj.rahuj.dto.ExpenditureDTO;
+import com.rahuj.rahuj.models.Client;
 import com.rahuj.rahuj.models.Expenditure;
 import com.rahuj.rahuj.models.ExpenditureCategory;
 import com.rahuj.rahuj.repositories.ExpenditureCategoryRepository;
@@ -25,7 +26,7 @@ public class ExpenditureService {
     public void saveExpenditure(ExpenditureDTO expenditureDTO) throws Exception {
         Expenditure expenditure = ExpenditureDTO.from(expenditureDTO);
 
-        //щіт
+        // щіт
         String category = expenditureDTO.getExpenditureCategoryDTO().getExpenditureCategoryDTO();
 
         if (expenditureCategoryRepository.existsByExpenditureCategory(category)) {
@@ -40,11 +41,23 @@ public class ExpenditureService {
     }
 
     @Transactional
-    public List<ExpenditureDTO> getAllExpCategoriesAsDto(){
+    public List<ExpenditureDTO> getAllExpCategoriesAsDto() {
         List<ExpenditureDTO> expenditureDTOList = new ArrayList<>();
-        for(Expenditure expenditure : expenditureRepository.findAll()){
+        for (Expenditure expenditure : expenditureRepository.findAll()) {
             expenditureDTOList.add(ExpenditureDTO.of(expenditure));
         }
+
+        return expenditureDTOList;
+    }
+
+    @Transactional
+    public List<ExpenditureDTO> gExpenditureDTOsByClient(Client client) {
+        List<ExpenditureDTO> expenditureDTOList = new ArrayList<>();
+        List<Expenditure> expenditureList = expenditureRepository.findAllByClient(client);
+        for (Expenditure e : expenditureList) {
+            expenditureDTOList.add(ExpenditureDTO.of(e));
+        }
+
         return expenditureDTOList;
     }
 }

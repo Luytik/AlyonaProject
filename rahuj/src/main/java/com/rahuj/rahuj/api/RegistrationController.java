@@ -35,6 +35,7 @@ public class RegistrationController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@ModelAttribute ClientDTO clientDTO) {
+        System.out.println("in post");
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(
                         clientDTO.getLogin(), clientDTO.getPassword()));
