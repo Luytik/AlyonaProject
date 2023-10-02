@@ -23,14 +23,14 @@ public class RegistrationService {
     public ErrorHandler register(RegistrationRequest request) {
 
         ErrorHandler errorHandler = new ErrorHandler();
-        boolean isClientExist = clientService.isClientExist(request.getEmail());
+        //boolean isClientExist = clientService.isClientExist(request.getEmail());
         boolean isValidEmail = emailValidator.test(request.getEmail());
 
-        if(isClientExist){
-            errorHandler.setError(true);
-            errorHandler.setText("User is exist");
-            return errorHandler;
-        }
+        // if(isClientExist){
+        //     errorHandler.setError(true);
+        //     errorHandler.setText("User is exist");
+        //     return errorHandler;
+        // }
 
         if(!isValidEmail){
             errorHandler.setError(true);

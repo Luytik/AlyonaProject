@@ -14,7 +14,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public interface ClientRepository extends JpaRepository<Client, Long>{
     Optional<Client> findByEmail(String email);
-    boolean isClientExist(String email);    
+    //boolean isClientExist(String email);    
     @Transactional
     @Modifying
     @Query("Update Client c SET c.enable = TRUE WHERE c.email = ?1")
