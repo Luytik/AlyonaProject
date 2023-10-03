@@ -52,11 +52,11 @@ public class AppConfig {
 
                                 // Add few expenditure categories
                                 ExpenditureCategory eCat1 = new ExpenditureCategory("Комунальні платежі");
-                                expenditureCategoryService.addNewCategory(eCat1);
+                                expenditureCategoryService.addNewCategory(eCat1, client1.getLogin());
                                 ExpenditureCategory eCat2 = new ExpenditureCategory("Покупка");
-                                expenditureCategoryService.addNewCategory(eCat2);
+                                expenditureCategoryService.addNewCategory(eCat2, client1.getLogin());
                                 ExpenditureCategory eCat3 = new ExpenditureCategory("Оплата за інтернет");
-                                expenditureCategoryService.addNewCategory(eCat3);
+                                expenditureCategoryService.addNewCategory(eCat3, client1.getLogin());
 
                                 // Adding few expenditures client 1
                                 Expenditure expenditure1 = new Expenditure(new Date(), eCat1, client1, 26.50,
@@ -66,25 +66,11 @@ public class AppConfig {
                                 Expenditure expenditure3 = new Expenditure(new Date(), eCat3, client1, 88888888.50,
                                                 "Клієнт1");
                                 ExpenditureDTO exDto1 = ExpenditureDTO.of(expenditure1);
-                                expenditureService.saveExpenditure(exDto1);
+                                expenditureService.saveExpenditure(exDto1, client1.getLogin());
                                 ExpenditureDTO exDto2 = ExpenditureDTO.of(expenditure2);
-                                expenditureService.saveExpenditure(exDto2);
+                                expenditureService.saveExpenditure(exDto2, client1.getLogin());
                                 ExpenditureDTO exDto3 = ExpenditureDTO.of(expenditure3);
-                                expenditureService.saveExpenditure(exDto3);
-
-                                // Adding few expenditures client 2
-                                Expenditure expenditure4 = new Expenditure(new Date(), eCat1, client2, 26.50,
-                                                "Клієнт2");
-                                Expenditure expenditure5 = new Expenditure(new Date(), eCat2, client2, 16645645645.50,
-                                                "Клієнт2");
-                                Expenditure expenditure6 = new Expenditure(new Date(), eCat3, client2, 88888888.50,
-                                                "Клієнт3");
-                                ExpenditureDTO exDto4 = ExpenditureDTO.of(expenditure4);
-                                expenditureService.saveExpenditure(exDto4);
-                                ExpenditureDTO exDto5 = ExpenditureDTO.of(expenditure5);
-                                expenditureService.saveExpenditure(exDto5);
-                                ExpenditureDTO exDto6 = ExpenditureDTO.of(expenditure6);
-                                expenditureService.saveExpenditure(exDto6);
+                                expenditureService.saveExpenditure(exDto3, client1.getLogin());
 
                                 // Add few revenue categories
                                 RevenueCategory rCat1 = new RevenueCategory("Заробітня плата");

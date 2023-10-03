@@ -1,5 +1,6 @@
 package com.rahuj.rahuj.api;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -24,14 +25,14 @@ public class ExpenditureCategoryRestController {
     }
 
     @GetMapping
-    public List<ExpenditureCategoryDTO> getAll() {
-        return expenditureCategoryService.getAllExpCategoriesAsDto();
+    public List<ExpenditureCategoryDTO> getAll(Principal principal) {
+        return expenditureCategoryService.getAllExpCategoriesAsDtoByClient(principal.getName());
     }
 
     @PostMapping
-    public ResponseEntity<?> addNew(@ModelAttribute ExpenditureCategoryDTO categoryDTO){
+    public ResponseEntity<?> addNew(@ModelAttribute ExpenditureCategoryDTO categoryDTO, Principal principal){
         try{
-            expenditureCategoryService.addNewCategory(categoryDTO.getExpenditureCategoryDTO());
+            expenditureCategoryService.addNewCategory(ExpenditureCategoryDTO.from(categoryDTO), principal.getName());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

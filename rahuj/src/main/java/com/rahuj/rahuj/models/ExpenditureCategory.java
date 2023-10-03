@@ -2,12 +2,14 @@ package com.rahuj.rahuj.models;
 
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +29,10 @@ public class ExpenditureCategory {
 
     @OneToMany(mappedBy = "expenditureCategory")
     private Set<Expenditure> expenditureList;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     public ExpenditureCategory(String category){
         expenditureCategory = category;

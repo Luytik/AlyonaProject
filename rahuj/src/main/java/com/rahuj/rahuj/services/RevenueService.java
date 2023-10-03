@@ -11,7 +11,7 @@ import com.rahuj.rahuj.models.RevenueCategory;
 import com.rahuj.rahuj.repositories.RevenueCategoryRepository;
 import com.rahuj.rahuj.repositories.RevenueRepository;
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
 @Service

@@ -39,24 +39,13 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
-    MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
-    http.authorizeHttpRequests((requests) -> requests
-        .requestMatchers(mvcMatcherBuilder.pattern("/api/**")).authenticated()
-        .requestMatchers(mvcMatcherBuilder.pattern("/auth/**")).permitAll()
-        .requestMatchers(toH2Console()).permitAll()
-        .anyRequest().authenticated())
-        .csrf(AbstractHttpConfigurer::disable)
-        .csrf(csrf -> csrf
-            .ignoringRequestMatchers(toH2Console())
-            .disable())
-        .headers(headers -> headers.frameOptions(FrameOptionsConfig::disable))
-    // .formLogin(form -> form
-    // .loginPage("/auth/login")
-    // .permitAll());
-    ;
-
-    // http.authenticationProvider(authenticationProvider());
-
+    http.csrf().disable()
+    .authorizeRequests()
+    .antMatchers("/h2-console/**", "/auth/**").permitAll()
+    .antMatchers("/api/**").permitAll()
+    .antMatchers("/*.js", "/*.jsx", "/main.css").permitAll()
+    .anyRequest().authenticated();
+    http.headers().frameOptions().disable();
     return http.build();
   }
 }

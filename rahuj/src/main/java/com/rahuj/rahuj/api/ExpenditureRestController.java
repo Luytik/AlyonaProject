@@ -30,10 +30,10 @@ public class ExpenditureRestController {
     private final ClientRepository clientRepository;
 
     @PostMapping
-    public ResponseEntity<?> addExpenditure(@ModelAttribute ExpenditureDTO expenditureDTO) {
+    public ResponseEntity<?> addExpenditure(@ModelAttribute ExpenditureDTO expenditureDTO, Principal principal) {
         if (isApplicableToSave(expenditureDTO)) {
             try {
-                expenditureService.saveExpenditure(expenditureDTO);
+                expenditureService.saveExpenditure(expenditureDTO, principal.getName());
                 return new ResponseEntity<>(HttpStatus.CREATED);
             } catch (Exception e) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -44,11 +44,8 @@ public class ExpenditureRestController {
 
     @GetMapping
     public List<ExpenditureDTO> getAllExpCategoriesAsDto(Principal principal) {
-        System.out.println(principal.getName());
-        return expenditureService.getEpenditureDTOsByClient(null);
-    }
-
-    
+        return expenditureService.getEpenditureDTOsByClient(principal.getName());
+    }    
 
     private boolean isApplicableToSave(ExpenditureDTO expenditureDTO) {
         if (!ConstsFormatDate.isDateCorrect(expenditureDTO.getDate()))
