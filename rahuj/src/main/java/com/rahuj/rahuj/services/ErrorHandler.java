@@ -1,6 +1,5 @@
 package com.rahuj.rahuj.services;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
