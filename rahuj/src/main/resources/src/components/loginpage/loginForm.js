@@ -33,7 +33,7 @@ function LoginForm() {
                 <span className=""> Ваш Email: </span>
                 <input
                     className=""
-                    type="email"
+                    type="text"
                     name="login"
                     value={inputs.login || ""}
                     onChange={handleChange}

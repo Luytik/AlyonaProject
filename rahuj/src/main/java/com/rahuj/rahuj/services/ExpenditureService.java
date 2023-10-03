@@ -51,7 +51,7 @@ public class ExpenditureService {
     }
 
     @Transactional
-    public List<ExpenditureDTO> gExpenditureDTOsByClient(Client client) {
+    public List<ExpenditureDTO> getEpenditureDTOsByClient(Client client) {
         List<ExpenditureDTO> expenditureDTOList = new ArrayList<>();
         List<Expenditure> expenditureList = expenditureRepository.findAllByClient(client);
         for (Expenditure e : expenditureList) {

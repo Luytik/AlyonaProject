@@ -23,27 +23,18 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ClientService implements UserDetailsService {
 
-        private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
         private final ClientRepository clientRepository;
         private final BCryptPasswordEncoder bCryptPasswordEncoder;
         private final ConfirmationTokenService confirmationTokenService;
 
         @Override
-        public UserDetails loadUserByUsername(String email)
+        public UserDetails loadUserByUsername(String login)
                         throws UsernameNotFoundException {
-                return clientRepository.findByEmail(email)
-                                .orElseThrow(() -> new UsernameNotFoundException(
-                                                String.format(USER_NOT_FOUND_MSG, email)));
+                return clientRepository.findByLogin(login);
         }
 
         @Transactional
         public String signUpClient(Client client) {
-                boolean clientExist = clientRepository
-                                .findByEmail(client.getEmail()).isPresent();
-
-                if (clientExist) {
-                        throw new IllegalStateException("email already taken");
-                }
 
                 String encodePassword = bCryptPasswordEncoder
                                 .encode(client.getPassword());

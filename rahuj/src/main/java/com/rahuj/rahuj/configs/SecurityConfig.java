@@ -16,7 +16,6 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
-
 import com.rahuj.rahuj.services.ClientService;
 
 import lombok.AllArgsConstructor;
@@ -48,7 +47,7 @@ public class SecurityConfig {
   public SecurityFilterChain filterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
     MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
     http.authorizeHttpRequests((requests) -> requests
-        .requestMatchers(mvcMatcherBuilder.pattern("/api/**")).authenticated()
+        .requestMatchers(mvcMatcherBuilder.pattern("/api/**")).permitAll()
         .requestMatchers(mvcMatcherBuilder.pattern("/auth/**")).permitAll()
         .requestMatchers(toH2Console()).permitAll()
         .anyRequest().authenticated())
@@ -56,7 +55,11 @@ public class SecurityConfig {
         .csrf(csrf -> csrf
             .ignoringRequestMatchers(toH2Console())
             .disable())
-        .headers(headers -> headers.frameOptions(FrameOptionsConfig::disable));
+        .headers(headers -> headers.frameOptions(FrameOptionsConfig::disable))
+        // .formLogin(form -> form
+        //     .loginPage("/auth/login")
+        //     .permitAll());
+    ;
 
     http.authenticationProvider(authenticationProvider());
 

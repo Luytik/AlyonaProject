@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 @Transactional(readOnly = true)
 public interface ClientRepository extends JpaRepository<Client, Long>{
-    Optional<Client> findByEmail(String email);
+    Client findByEmail(String email);
     Client findByLogin(String login);
     boolean existsByEmail(String email);
 

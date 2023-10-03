@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.security.core.context.SecurityContext;
 
 import com.rahuj.rahuj.dto.ExpenditureDTO;
 import com.rahuj.rahuj.models.Client;
@@ -42,9 +44,11 @@ public class ExpenditureRestController {
 
     @GetMapping
     public List<ExpenditureDTO> getAllExpCategoriesAsDto(Principal principal) {
-        Client client = clientRepository.findByLogin(principal.getName());
-        return expenditureService.gExpenditureDTOsByClient(client);
+        System.out.println(principal.getName());
+        return expenditureService.getEpenditureDTOsByClient(null);
     }
+
+    
 
     private boolean isApplicableToSave(ExpenditureDTO expenditureDTO) {
         if (!ConstsFormatDate.isDateCorrect(expenditureDTO.getDate()))
