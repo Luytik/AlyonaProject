@@ -7,7 +7,7 @@ function Home() {
     const listBtn = homeBtn.map((item, index) => <ButtonHome name={item.name} link={item.link} key={index + "m"}></ButtonHome>) //перебирання однакових компонент для виводу меню домашнього
 
     return (
-        <main className="homepage">
+        <main className="homepage bg-gradient-to-br from-[#b1c9b3] via-[#a3cccd] via-[#96a1ad] to-[#79b279] min-h-full">
             <div className="container px-4 mx-auto min-h-full">
                 <nav className="flex gap-2 place-content-end">
                     {listBtn}
