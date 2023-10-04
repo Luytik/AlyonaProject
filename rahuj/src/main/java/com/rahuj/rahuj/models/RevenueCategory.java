@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +29,10 @@ public class RevenueCategory {
 
     @OneToMany(mappedBy = "revenueCategory")
     private Set<Revenue> revenueList;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     public RevenueCategory(String category){
         revenueCategory = category;

@@ -1,9 +1,7 @@
 package com.rahuj.rahuj.services;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 import com.rahuj.rahuj.dto.ExpenditureDTO;
 import com.rahuj.rahuj.models.Client;
@@ -12,7 +10,6 @@ import com.rahuj.rahuj.models.ExpenditureCategory;
 import com.rahuj.rahuj.repositories.ClientRepository;
 import com.rahuj.rahuj.repositories.ExpenditureCategoryRepository;
 import com.rahuj.rahuj.repositories.ExpenditureRepository;
-
 import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
@@ -57,14 +54,8 @@ public class ExpenditureService {
     @Transactional
     public List<ExpenditureDTO> getEpenditureDTOsByClient(String clientLogin) {
         Client client = clientRepository.findByLogin(clientLogin);
-        System.out.println("*******************************");
-        System.out.println(client.getEmail());
-        System.out.println("*******************************");
         List<ExpenditureDTO> expenditureDTOList = new ArrayList<>();
-        ArrayList<Expenditure> expenditureList = expenditureRepository.findAllByClientId(client.getId());
-        System.out.println("*******************************");
-        System.out.println(expenditureList.size());
-        System.out.println("*******************************");
+        List<Expenditure> expenditureList = expenditureRepository.findAllByClientId(client.getId());
         for (Expenditure e : expenditureList) {
             expenditureDTOList.add(ExpenditureDTO.of(e));
         }

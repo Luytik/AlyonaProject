@@ -74,11 +74,11 @@ public class AppConfig {
 
                                 // Add few revenue categories
                                 RevenueCategory rCat1 = new RevenueCategory("Заробітня плата");
-                                revenueCategoryService.addNewCategory(rCat1);
+                                revenueCategoryService.addNewCategory(rCat1, client1.getLogin());
                                 RevenueCategory rCat2 = new RevenueCategory("Продаж");
-                                revenueCategoryService.addNewCategory(rCat2);
+                                revenueCategoryService.addNewCategory(rCat2, client1.getLogin());
                                 RevenueCategory rCat3 = new RevenueCategory("Послуги");
-                                revenueCategoryService.addNewCategory(rCat3);
+                                revenueCategoryService.addNewCategory(rCat3, client1.getLogin());
 
                                 Revenue revenue1 = new Revenue(new Date(), rCat1, client1, 565656456.23,
                                                 "Клієнт1");
@@ -100,12 +100,12 @@ public class AppConfig {
                                 RevenueDTO revDto5 = RevenueDTO.of(revenue5);
                                 RevenueDTO revDto6 = RevenueDTO.of(revenue6);
 
-                                revenueService.saveRevenue(revDto1);
-                                revenueService.saveRevenue(revDto2);
-                                revenueService.saveRevenue(revDto3);
-                                revenueService.saveRevenue(revDto4);
-                                revenueService.saveRevenue(revDto5);
-                                revenueService.saveRevenue(revDto6);
+                                revenueService.saveRevenue(revDto1, client1.getLogin());
+                                revenueService.saveRevenue(revDto2, client1.getLogin());
+                                revenueService.saveRevenue(revDto3, client1.getLogin());
+                                revenueService.saveRevenue(revDto4, client1.getLogin());
+                                revenueService.saveRevenue(revDto5, client1.getLogin());
+                                revenueService.saveRevenue(revDto6, client1.getLogin());
 
                         }
                 };

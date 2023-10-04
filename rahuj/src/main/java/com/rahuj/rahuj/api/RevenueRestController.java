@@ -1,5 +1,6 @@
 package com.rahuj.rahuj.api;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -24,10 +25,10 @@ public class RevenueRestController {
     private final RevenueService revenueService;
 
     @PostMapping
-    public ResponseEntity<?> addRevenue(@ModelAttribute RevenueDTO revenueDTO) {
+    public ResponseEntity<?> addRevenue(@ModelAttribute RevenueDTO revenueDTO, Principal principal) {
         if (isApplicableToSave(revenueDTO)) {
             try {
-                revenueService.saveRevenue(revenueDTO);
+                revenueService.saveRevenue(revenueDTO, principal.getName());
                 return new ResponseEntity<>(HttpStatus.CREATED);
             } catch (Exception e) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

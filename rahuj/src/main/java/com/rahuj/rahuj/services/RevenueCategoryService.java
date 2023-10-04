@@ -6,40 +6,34 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.rahuj.rahuj.dto.RevenueCategoryDTO;
+import com.rahuj.rahuj.models.Client;
 import com.rahuj.rahuj.models.RevenueCategory;
+import com.rahuj.rahuj.repositories.ClientRepository;
 import com.rahuj.rahuj.repositories.RevenueCategoryRepository;
+
+import lombok.AllArgsConstructor;
 
 import javax.transaction.Transactional;
 
 @Service
+@AllArgsConstructor
 public class RevenueCategoryService {
         private final RevenueCategoryRepository repository;
-
-    public RevenueCategoryService(RevenueCategoryRepository rep){
-        repository = rep;
-    }
+        private final ClientRepository clientRepository;
 
     @Transactional
-    public void addNewCategory(String name) throws Exception{
-        RevenueCategory category = new RevenueCategory(name);
+    public void addNewCategory(RevenueCategory category, String clientLogin) throws Exception{
+        Client client = clientRepository.findByLogin(clientLogin);
+        category.setClient(client);
         repository.save(category);
     }
 
     @Transactional
-    public void addNewCategory(RevenueCategory category) throws Exception{
-        repository.save(category);
-    }
-
-    @Transactional
-    public void deleteCategory(RevenueCategory category){
-        repository.delete(category);
-    }
-
-    @Transactional
-    public List<RevenueCategoryDTO> getAllRevCategoriesAsDTO(){
+    public List<RevenueCategoryDTO> getAllRevCategoriesAsDTOByClient(String clientLogin){
+        Client client = clientRepository.findByLogin(clientLogin);
         List<RevenueCategoryDTO> listRevenueCategoryDTOs = new ArrayList<>();
 
-        for(RevenueCategory cat : repository.findAll()){
+        for(RevenueCategory cat : repository.findAllByClient(client)){
             listRevenueCategoryDTOs.add(RevenueCategoryDTO.of(cat));
         }
 

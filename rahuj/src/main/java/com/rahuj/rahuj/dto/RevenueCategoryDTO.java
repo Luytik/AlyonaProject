@@ -1,5 +1,6 @@
 package com.rahuj.rahuj.dto;
 
+import com.rahuj.rahuj.models.ExpenditureCategory;
 import com.rahuj.rahuj.models.RevenueCategory;
 
 import lombok.AllArgsConstructor;
@@ -18,5 +19,11 @@ public class RevenueCategoryDTO {
         RevenueCategoryDTO categoryDTO = new RevenueCategoryDTO();
         categoryDTO.setRevenueCategoryDTO(category.getRevenueCategory());
         return categoryDTO;
+    }
+
+    public static RevenueCategory from (RevenueCategoryDTO revenueCategoryDTO){
+        RevenueCategory revenueCategory = new RevenueCategory();
+        revenueCategory.setRevenueCategory(revenueCategoryDTO.revenueCategoryDTO);
+        return revenueCategory;
     }
 }
