@@ -1,15 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import Servises from "../../servises/servises";
+import {Login} from "../../../App"
 
 function GetAllListCost() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
+const login = useContext(Login)
+
   useEffect(() => {
-    new Servises().getListCost()
-      .then(
+
+    fetch(`http://localhost:8080/api/expenditure/?login=${login[0]}`)
+    //new Servises().getListCost()
+    .then(res => res.json())  
+    
+    .then(
         (result) => {
           setIsLoaded(true);
           setItems(result);

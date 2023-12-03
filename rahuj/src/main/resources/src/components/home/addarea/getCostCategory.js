@@ -1,13 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Servises from "../../servises/servises";
+import {Login} from "../../../App"
+
 
 function GetCostCategory() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
 
+    const login = useContext(Login)
+    console.log(login)
     useEffect(() => {
-        new Servises().getCategoryCost()
+
+        fetch(`http://localhost:8080/api/categories/expenditureCategory/?login=${login[0]}`)
+        //new Servises().getCategoryCost()
+            .then(res => res.json())
+
             .then(
                 (result) => {
                     setIsLoaded(true);
