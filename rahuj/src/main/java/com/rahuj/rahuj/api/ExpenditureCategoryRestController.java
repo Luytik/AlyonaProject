@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rahuj.rahuj.dto.ExpenditureCategoryDTO;
@@ -25,8 +26,9 @@ public class ExpenditureCategoryRestController {
     }
 
     @GetMapping
-    public List<ExpenditureCategoryDTO> getAll(Principal principal) {
-        return expenditureCategoryService.getAllExpCategoriesAsDtoByClient(principal.getName());
+    public List<ExpenditureCategoryDTO> getAll(@RequestParam String login) {
+        
+        return expenditureCategoryService.getAllExpCategoriesAsDtoByClient(login);
     }
 
     @PostMapping

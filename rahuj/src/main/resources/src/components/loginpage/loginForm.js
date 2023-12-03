@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Login } from "../../App";
 
 function LoginForm() {
 
     const [inputs, setInputs] = useState({});
-
+    const onLogin = useContext(Login);
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -12,7 +13,7 @@ function LoginForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(inputs);
+        //console.log(inputs);
         const formData = new FormData(event.target);
 
         fetch('http://localhost:8080/auth/login', {
@@ -22,7 +23,8 @@ function LoginForm() {
             .then((response) => response.text())
             .then((result) => {
                 setInputs(result);
-                //console.log(setInputs(result));
+                //console.log(result);
+                onLogin[1](result)
             });
     }
 

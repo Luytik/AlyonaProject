@@ -15,10 +15,12 @@ import LoginPage from './components/loginpage/logippage';
 
 
 
-import React, { useEffect } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import AuthStore from "./components/authtest/store"
 import PrivateRoute from "./components/authtest/privateRoute";
+import TestV from './components/home/test/test';
+import TestV2 from './components/home/test/testV2';
  
 /* const App = observer(() => {
   
@@ -26,7 +28,13 @@ import PrivateRoute from "./components/authtest/privateRoute";
      AuthStore.checkAuth();
   }, []);
  */
+const Login = createContext(null);
+
  function App() { 
+const[isLogin, setIsLogin] = useState(null);
+function onLogin (data) {
+ setIsLogin(data);
+}
 
 /*   useEffect(() => {
     AuthStore.checkAuth();
@@ -38,7 +46,9 @@ import PrivateRoute from "./components/authtest/privateRoute";
       <div className="h-screen grid auto-rows-fr gap-0">
         <Header></Header>
         <div className='row-[span_7_/_span_7] overflow-auto'>
+          <Login.Provider value={[isLogin, onLogin]}>
           <Routes>
+
             <Route path='/' element={<Mainpage />} />
             <Route path='/finans' element={<FinansPage />} />
             <Route path='/faq' element={<FAQ />} />
@@ -53,20 +63,23 @@ import PrivateRoute from "./components/authtest/privateRoute";
 
             <Route path="*" element={<div>404... not found </div>} /> */}
 
-
+              
               <Route path='/home' element={<Home />}>
                 <Route index element={<HomeIndex />} />
 
                 <Route path="/home/new_income" element={<AddNewIncome />} />
                 <Route path="/home/new_costs" element={<AddNewCosts />} />
                 <Route path="/home/new_statistics" element={<Statistics />} />
+                <Route path="/home/testtest" element={<TestV/>} />
+
 
               </Route>
-
+              
             
 
 
           </Routes>
+          </Login.Provider>
         </div>
 
         <Footer></Footer>
@@ -76,4 +89,4 @@ import PrivateRoute from "./components/authtest/privateRoute";
 
 };
 
-export default App;
+export {App, Login};

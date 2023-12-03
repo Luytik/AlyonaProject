@@ -26,10 +26,11 @@ const LoginPage = () => {
             
 
         </form> */}
-                        <div className="my-5 text-center font-bold text-lg">Зареєструватись:</div>
-                        <RegistrationForm />
+                        
                         <div className="my-5 text-center font-bold text-lg">Авторизуватись:</div>
                         <LoginForm />
+                        <div className="my-5 text-center font-bold text-lg">Зареєструватись:</div>
+                        <RegistrationForm />
                     </div>
                 </div>
 

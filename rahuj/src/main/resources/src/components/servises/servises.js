@@ -1,7 +1,9 @@
 class Servises {
     _link = "http://localhost:8080/api/"
     async getCategoryCost () {
-        const data = await fetch(`${this._link}categories/expenditureCategory`);
+        //const data = await fetch(`${this._link}categories/expenditureCategory`);
+        const data = await fetch(`${this._link}categories/expenditureCategory/?login=vadik`);
+
         return await data.json();
     }
     
@@ -10,7 +12,8 @@ class Servises {
         return await data.json();
     }
     async getListCost () {
-        const data = await fetch(`${this._link}expenditure/`);
+        //const data = await fetch(`${this._link}expenditure/`);
+        const data = await fetch(`${this._link}expenditure/?login=vadik`);
         return await data.json();
     }
     async getListCome () {

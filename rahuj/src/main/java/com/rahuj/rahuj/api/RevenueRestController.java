@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rahuj.rahuj.dto.ExpenditureDTO;
@@ -38,7 +39,7 @@ public class RevenueRestController {
     }
 
     @GetMapping
-    public List<RevenueDTO> getAllRevCategoriesAsDto() {
+    public List<RevenueDTO> getAllRevCategoriesAsDto(@RequestParam String login) {
         return revenueService.getAllRevCategoriesAsDTO();
     }
 

@@ -46,6 +46,7 @@ public class SecurityConfig {
     .antMatchers("/*.js", "/*.jsx", "/main.css").permitAll()
     .anyRequest().authenticated();
     http.headers().frameOptions().disable();
+    http.cors().disable();
     return http.build();
   }
 }

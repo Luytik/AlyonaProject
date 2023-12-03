@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../image/logo1.png'
 
 function Header() {
+
     return (
         <header className="bg-[#D5D8D8] font-sans font-medium uppercase text-lime-950 text-base row-[span_1_/_span_2]">
             <div className="container px-4 mx-auto py-5">
@@ -10,17 +11,18 @@ function Header() {
                         <img className='h-16' src={logo} alt="logo" />
                     </div>
                     <ul className="flex-1 flex flex-row place-content-end gap-7 place-items-center">
-                        <li className="headermenu__item "><Link to="/" className={({isActive}) => isActive ? "text-green" : undefined}>головна</Link></li>
-                        <li className="headermenu__item"><Link to="/finans" activeClassName='text-green' >фінанси</Link></li>
-                        <li className="headermenu__item"><Link to="/faq" activeClassName =" text-green">Питання/відповідь</Link></li>
-                        <li className="headermenu__item"><Link to="/aboutus" className={({ isActive }) => (isActive ? 'text-green' : ' text-5xl')}>про нас</Link></li>
-                        <li className="headermenu__item"><Link to="/home">Мій кабінет</Link></li>
+                        <li className="headermenu__item "><NavLink exact="true" activeClassName="activeclass" to="/">головна</NavLink></li>
+                        <li className="headermenu__item"><NavLink exact to="/finans"  activeClassName="activeclass">фінанси</NavLink></li>
+                        <li className="headermenu__item"><NavLink exact to="/faq"  activeClassName="activeclass">Питання/відповідь</NavLink></li>
+                        <li className="headermenu__item"><NavLink exact to="/aboutus"  activeClassName="activeclass">про нас</NavLink></li>
+                        <li className="headermenu__item"><NavLink exact to="/home"  activeClassName="activeclass">Мій кабінет</NavLink></li>
                         
                     </ul>
                 </div>
             </div>
         </header>
     );
+   
 }
 
 export default Header;

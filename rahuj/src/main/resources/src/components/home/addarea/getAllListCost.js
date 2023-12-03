@@ -20,7 +20,7 @@ function GetAllListCost() {
         }
 
       )
-
+console.log(items);
   }, [])
 
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContext;
@@ -43,8 +44,8 @@ public class ExpenditureRestController {
     }
 
     @GetMapping
-    public List<ExpenditureDTO> getAllExpCategoriesAsDto(Principal principal) {
-        return expenditureService.getEpenditureDTOsByClient(principal.getName());
+    public List<ExpenditureDTO> getAllExpCategoriesAsDto(@RequestParam String login) {
+        return expenditureService.getEpenditureDTOsByClient(login);
     }    
 
     private boolean isApplicableToSave(ExpenditureDTO expenditureDTO) {
