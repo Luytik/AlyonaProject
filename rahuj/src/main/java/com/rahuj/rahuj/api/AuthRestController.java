@@ -39,7 +39,13 @@ public class AuthRestController {
     }
     @CrossOrigin
     @GetMapping("/test")
-    public String test() {
+    public String test(Principal principal) {
+        try {
+            System.out.println("in test");
+            System.out.println(principal.getName());
+        } catch (Exception e) {
+            System.out.println("error handling");
+        }
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }

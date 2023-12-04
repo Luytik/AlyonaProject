@@ -44,7 +44,9 @@ public class ExpenditureRestController {
     }
 
     @GetMapping
-    public List<ExpenditureDTO> getAllExpCategoriesAsDto(@RequestParam String login) {
+    public List<ExpenditureDTO> getAllExpCategoriesAsDto(@RequestParam String login, Principal principal) {
+        System.out.println("in getAllExpCategoriesAsDto");
+        System.out.println(principal.getName());
         return expenditureService.getEpenditureDTOsByClient(login);
     }    
 
