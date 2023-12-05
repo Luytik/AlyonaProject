@@ -30,9 +30,9 @@ public class RevenueCategoryRestController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addNew(@ModelAttribute RevenueCategoryDTO categoryDTO, Principal principal){
+    public ResponseEntity<?> addNew(@ModelAttribute RevenueCategoryDTO categoryDTO, @RequestParam String login){
         try {
-            revenueCategoryService.addNewCategory(RevenueCategoryDTO.from(categoryDTO), principal.getName());
+            revenueCategoryService.addNewCategory(RevenueCategoryDTO.from(categoryDTO), login);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

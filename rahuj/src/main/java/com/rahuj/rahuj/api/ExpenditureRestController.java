@@ -31,10 +31,10 @@ public class ExpenditureRestController {
     private final ClientRepository clientRepository;
 
     @PostMapping
-    public ResponseEntity<?> addExpenditure(@ModelAttribute ExpenditureDTO expenditureDTO, Principal principal) {
+    public ResponseEntity<?> addExpenditure(@ModelAttribute ExpenditureDTO expenditureDTO, @RequestParam String login) {
         if (isApplicableToSave(expenditureDTO)) {
             try {
-                expenditureService.saveExpenditure(expenditureDTO, principal.getName());
+                expenditureService.saveExpenditure(expenditureDTO, login);
                 return new ResponseEntity<>(HttpStatus.CREATED);
             } catch (Exception e) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

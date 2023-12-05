@@ -32,9 +32,9 @@ public class ExpenditureCategoryRestController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addNew(@ModelAttribute ExpenditureCategoryDTO categoryDTO, Principal principal){
+    public ResponseEntity<?> addNew(@ModelAttribute ExpenditureCategoryDTO categoryDTO, @RequestParam String login){
         try{
-            expenditureCategoryService.addNewCategory(ExpenditureCategoryDTO.from(categoryDTO), principal.getName());
+            expenditureCategoryService.addNewCategory(ExpenditureCategoryDTO.from(categoryDTO), login);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

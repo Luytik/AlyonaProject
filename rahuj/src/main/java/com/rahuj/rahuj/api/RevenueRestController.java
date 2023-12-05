@@ -26,10 +26,10 @@ public class RevenueRestController {
     private final RevenueService revenueService;
 
     @PostMapping
-    public ResponseEntity<?> addRevenue(@ModelAttribute RevenueDTO revenueDTO, Principal principal) {
+    public ResponseEntity<?> addRevenue(@ModelAttribute RevenueDTO revenueDTO, @RequestParam String login) {
         if (isApplicableToSave(revenueDTO)) {
             try {
-                revenueService.saveRevenue(revenueDTO, principal.getName());
+                revenueService.saveRevenue(revenueDTO, login);
                 return new ResponseEntity<>(HttpStatus.CREATED);
             } catch (Exception e) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

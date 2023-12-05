@@ -28,6 +28,8 @@ public class Client{
     private String login;
     private String email;
     private String password;
+    @Column(columnDefinition = "boolean default false")
+    private boolean isLogginedIn;
 
     public Client(String login, String email, String password) {
         this.login = login;
@@ -48,5 +50,5 @@ public class Client{
     private List<RevenueCategory> revenueCategories;
 
     @ManyToMany
-    private Set<Role> roles;    
+    private Set<Role> roles;
 }

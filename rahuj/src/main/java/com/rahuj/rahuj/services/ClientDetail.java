@@ -3,6 +3,8 @@ package com.rahuj.rahuj.services;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -33,8 +35,29 @@ public class ClientDetail implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(username, client.getPassword(), authorities);
     }
 
+    @Transactional
     public void signUpClient(Client client){
         clientRepository.save(client);
+    }
+
+    @Transactional
+    public void signInClient(String login){
+        clientRepository.updateIsLogginedByUsername(login, true);
+    }
+
+    @Transactional
+    public void logoutClient(String login){
+        clientRepository.updateIsLogginedByUsername(login, false);
+    }
+
+    @Transactional
+    public boolean isUserLogginedIn(String login){
+        return clientRepository.findIsLogginedInByLogin(login);
+    }
+
+    @Transactional
+    public boolean isExistClient(String login){
+        return clientRepository.existsByLogin(login);
     }
 
 }
