@@ -70,7 +70,7 @@ function onLogin (data) {
                 <Route path="/home/new_income" element={<AddNewIncome />} />
                 <Route path="/home/new_costs" element={<AddNewCosts />} />
                 <Route path="/home/new_statistics" element={<Statistics />} />
-                <Route path="/home/testtest" element={<TestV/>} />
+                <Route path="/home/testtest" />
 
 
               </Route>
