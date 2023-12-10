@@ -1,9 +1,13 @@
 import { useContext, useState } from "react";
 import { Login } from "../../App";
-
+//const loginName = null;
 function LoginForm() {
   const [inputs, setInputs] = useState({});
   const onLogin = useContext(Login);
+
+  //console.log(onLogin[0]);
+  //localStorage.setItem(loginName, onLogin[0]);
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;

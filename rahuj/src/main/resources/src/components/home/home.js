@@ -37,6 +37,13 @@ function Home() {
         <div className="">
           <LoginForm />
           <RegistrationForm />
+          <button
+            onClick={() => {
+              localStorage.removeItem("loginName");
+            }}
+          >
+            EXIT
+          </button>
 
           <Outlet />
         </div>

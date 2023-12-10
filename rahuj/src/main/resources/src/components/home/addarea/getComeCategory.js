@@ -12,17 +12,19 @@ function GetComeCategory() {
   useEffect(() => {
     fetch(
       `http://localhost:8080/api/categories/revenueCategory/?login=${login[0]}`
-    ).then(
-      (result) => {
-        setIsLoaded(true);
-        setItems(result);
-      },
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
 
-      (error) => {
-        setIsLoaded(true);
-        setError(error);
-      }
-    );
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
   }, []);
 
   if (error) {
