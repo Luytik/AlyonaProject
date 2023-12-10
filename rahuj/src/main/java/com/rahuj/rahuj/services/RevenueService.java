@@ -40,10 +40,21 @@ public class RevenueService {
     }
 
     @Transactional
-    public List<RevenueDTO> getAllRevCategoriesAsDTO(){
+    public List<RevenueDTO> getAllRevCategoriesAsDTO() {
         List<RevenueDTO> revenueDTOList = new ArrayList<>();
-        for(Revenue revenue : revenueRepository.findAll()){
+        for (Revenue revenue : revenueRepository.findAll()) {
             revenueDTOList.add(RevenueDTO.of(revenue));
+        }
+        return revenueDTOList;
+    }
+
+    @Transactional
+    public List<RevenueDTO> getRevenueDTOsByClient(String login) {
+        Client client = clientRepository.findByLogin(login);
+        List<RevenueDTO> revenueDTOList = new ArrayList<>();
+        List<Revenue> revenueList = revenueRepository.findAllByClientId(client.getId());
+        for(Revenue r : revenueList){
+            revenueDTOList.add(RevenueDTO.of(r));
         }
         return revenueDTOList;
     }

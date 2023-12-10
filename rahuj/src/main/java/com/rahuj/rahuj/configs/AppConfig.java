@@ -56,21 +56,21 @@ public class AppConfig {
                                 ExpenditureCategory eCat2 = new ExpenditureCategory("Покупка");
                                 expenditureCategoryService.addNewCategory(eCat2, client1.getLogin());
                                 ExpenditureCategory eCat3 = new ExpenditureCategory("Оплата за інтернет");
-                                expenditureCategoryService.addNewCategory(eCat3, client1.getLogin());
+                                expenditureCategoryService.addNewCategory(eCat3, client2.getLogin());
 
                                 // Adding few expenditures client 1
                                 Expenditure expenditure1 = new Expenditure(new Date(), eCat1, client1, 26.50,
-                                                "Клієнт1");
+                                                "Vadik");
                                 Expenditure expenditure2 = new Expenditure(new Date(), eCat2, client1, 16645645645.50,
-                                                "Клієнт1");
-                                Expenditure expenditure3 = new Expenditure(new Date(), eCat3, client1, 88888888.50,
-                                                "Клієнт1");
+                                                "Vadik");
+                                Expenditure expenditure3 = new Expenditure(new Date(), eCat3, client2, 88888888.50,
+                                                "Alyona");
                                 ExpenditureDTO exDto1 = ExpenditureDTO.of(expenditure1);
                                 expenditureService.saveExpenditure(exDto1, client1.getLogin());
                                 ExpenditureDTO exDto2 = ExpenditureDTO.of(expenditure2);
                                 expenditureService.saveExpenditure(exDto2, client1.getLogin());
                                 ExpenditureDTO exDto3 = ExpenditureDTO.of(expenditure3);
-                                expenditureService.saveExpenditure(exDto3, client1.getLogin());
+                                expenditureService.saveExpenditure(exDto3, client2.getLogin());
 
                                 // Add few revenue categories
                                 RevenueCategory rCat1 = new RevenueCategory("Заробітня плата");
@@ -78,20 +78,20 @@ public class AppConfig {
                                 RevenueCategory rCat2 = new RevenueCategory("Продаж");
                                 revenueCategoryService.addNewCategory(rCat2, client1.getLogin());
                                 RevenueCategory rCat3 = new RevenueCategory("Послуги");
-                                revenueCategoryService.addNewCategory(rCat3, client1.getLogin());
+                                revenueCategoryService.addNewCategory(rCat3, client2.getLogin());
 
                                 Revenue revenue1 = new Revenue(new Date(), rCat1, client1, 565656456.23,
-                                                "Клієнт1");
+                                                "Vadik");
                                 Revenue revenue2 = new Revenue(new Date(), rCat2, client1, 65656456.23,
-                                                "Клієнт1");
+                                                "Vadik");
                                 Revenue revenue3 = new Revenue(new Date(), rCat3, client1, 65656456.23,
-                                                "Клієнт1");
-                                Revenue revenue4 = new Revenue(new Date(), rCat1, client1, 565656456.23,
-                                                "Клієнт2");
-                                Revenue revenue5 = new Revenue(new Date(), rCat2, client1, 65656456.23,
-                                                "Клієнт2");
-                                Revenue revenue6 = new Revenue(new Date(), rCat3, client1, 65656456.23,
-                                                "Клієнт2");
+                                                "Vadik");
+                                Revenue revenue4 = new Revenue(new Date(), rCat1, client2, 565656456.23,
+                                                "Alyona");
+                                Revenue revenue5 = new Revenue(new Date(), rCat2, client2, 65656456.23,
+                                                "Alyona");
+                                Revenue revenue6 = new Revenue(new Date(), rCat3, client2, 65656456.23,
+                                                "Alyona");
 
                                 RevenueDTO revDto1 = RevenueDTO.of(revenue1);
                                 RevenueDTO revDto2 = RevenueDTO.of(revenue2);
@@ -103,9 +103,9 @@ public class AppConfig {
                                 revenueService.saveRevenue(revDto1, client1.getLogin());
                                 revenueService.saveRevenue(revDto2, client1.getLogin());
                                 revenueService.saveRevenue(revDto3, client1.getLogin());
-                                revenueService.saveRevenue(revDto4, client1.getLogin());
-                                revenueService.saveRevenue(revDto5, client1.getLogin());
-                                revenueService.saveRevenue(revDto6, client1.getLogin());
+                                revenueService.saveRevenue(revDto4, client2.getLogin());
+                                revenueService.saveRevenue(revDto5, client2.getLogin());
+                                revenueService.saveRevenue(revDto6, client2.getLogin());
 
                         }
                 };

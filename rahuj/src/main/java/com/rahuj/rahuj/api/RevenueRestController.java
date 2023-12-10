@@ -40,7 +40,7 @@ public class RevenueRestController {
 
     @GetMapping
     public List<RevenueDTO> getAllRevCategoriesAsDto(@RequestParam String login) {
-        return revenueService.getAllRevCategoriesAsDTO();
+        return revenueService.getRevenueDTOsByClient(login);
     }
 
     private boolean isApplicableToSave(RevenueDTO revenueDTO) {
