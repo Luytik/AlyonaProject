@@ -5,7 +5,7 @@ import Footer from "./components/footer/footer";
 import Mainpage from "./components/mainpage/mainpage";
 import Home from "./components/home/home";
 import AddNewIncome from "./components/home/addarea/addnewincome";
-import HomeIndex from "./components/home/listarea/homeindex";
+import HomeIndex from "./components/test/homeindex";
 import AddNewCosts from "./components/home/addarea/addnewcosts";
 import Statistics from "./components/home/statistics/statistics";
 import FinansPage from "./components/finans/finansPage";

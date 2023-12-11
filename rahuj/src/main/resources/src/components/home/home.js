@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import ButtonHome from "./listarea/buttonHome";
+import ButtonHome from "./buttonHome";
 import { useContext } from "react";
 import { Login } from "../../App";
 

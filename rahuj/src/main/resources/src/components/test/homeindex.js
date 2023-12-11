@@ -1,4 +1,4 @@
-import LoginPage from "../../loginpage/logippage";
+import LoginPage from "../loginpage/logippage";
 
 const HomeIndex = () => {
   return (
