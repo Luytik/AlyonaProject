@@ -26,6 +26,7 @@ function AddFilsToComePage() {
         setInputs(result);
         console.log(setInputs(result));
       });
+    document.location.reload();
   };
 
   return (

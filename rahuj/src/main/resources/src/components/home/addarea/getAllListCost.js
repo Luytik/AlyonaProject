@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 
-import Servises from "../../servises/servises";
 import { Login } from "../../../App";
 
 function GetAllListCost() {
@@ -36,29 +35,20 @@ function GetAllListCost() {
     return (
       <>
         {items.map((item, index) => (
-          <div className="bg-[#52aea3] flex place-content-around p-3 rounded-xl items-stretch gap-4 items-center">
-            <div
-              className="lastcghange__item flex-1 self-center"
-              key={index + "yq"}
-            >
+          <div
+            className="bg-[#52aea3] flex place-content-around p-3 rounded-xl items-stretch gap-4 items-center"
+            key={index + "yq"}
+          >
+            <div className="lastcghange__item flex-1 self-center">
               {item.date}
             </div>
-            <div
-              className="lastcghange__item flex-1 self-center"
-              key={index + "rw"}
-            >
+            <div className="lastcghange__item flex-1 self-center">
               {item.expenditureCategoryDTO.expenditureCategoryDTO}
             </div>
-            <div
-              className="lastcghange__item flex-1 self-center"
-              key={index + "we"}
-            >
+            <div className="lastcghange__item flex-1 self-center">
               {item.money}
             </div>
-            <div
-              className="lastcghange__item flex-1 self-center"
-              key={index + "qf"}
-            >
+            <div className="lastcghange__item flex-1 self-center">
               {item.description}
             </div>
           </div>

@@ -1,41 +1,42 @@
-import ButtonHome from "../home/listarea/buttonHome"
+import { useContext } from "react";
 import LoginForm from "./loginForm";
 import RegistrationForm from "./registrationForm";
+import { Login } from "../../App";
+
 const LoginPage = () => {
-    return (
-        <>
-            <main className="bg-gradient-to-b from-[#9abac9] via-[#90a2a2] via-[#839d9d] to-[#838b8e] min-h-full">
-                <div className="container px-4 mx-auto py-5">
-
-                    <div className="bg-[#9db0b0] p-5 my-5 rounded-2xl gap-5 w-1/2 mx-auto">
-
-                        {/* <div className="my-5 text-center font-bold text-lg">Авторизуватись:</div>
-        <form className="flex flex-col gap-3">
-            <div><span> Ваш Email: </span><input name="email" type="email"/></div>
-            <div><span> Ваш Login: </span><input name="name" type="text"/></div>
-            <div><span> Ваш пароль: </span><input name="password" type="password"/></div>
-            <ButtonHome name = "ввійти"></ButtonHome>
-        </form>
-        <div className="my-5 text-center font-bold text-lg">Зареєструватись:</div>
-        <form className="grid grid-cols-2 gap-4 justify-items-center lg:px-20">
-            <span className=""> Ваш Email: </span><input className="" name="email" type="email"/>
-            <span className=""> Ваш Login: </span><input className="" name="name" type="text"/>
-            <span > Ваш пароль: </span><input className="" name="password" type="password"/>
-            <span > Повторіть пароль: </span><input className="" name="password" type="password"/>
-            <div className="w-min mx-auto col-span-2"><ButtonHome name = "зареєструватись"></ButtonHome></div>
-            
-
-        </form> */}
-                        
-                        <div className="my-5 text-center font-bold text-lg">Авторизуватись:</div>
-                        <LoginForm />
-                        <div className="my-5 text-center font-bold text-lg">Зареєструватись:</div>
-                        <RegistrationForm />
-                    </div>
-                </div>
-
-            </main>
-        </>
-    )
-}
+  const login = useContext(Login);
+  return (
+    <>
+      <div className="container px-4 mx-auto py-5">
+        <div className="bg-[#9db0b0] p-5 my-5 rounded-2xl gap-5 w-1/2 mx-auto">
+          {login[0] ? (
+            <>
+              <div className="">ваш логін - {login}</div>
+              <button
+                className="h-11 px-4 bg-[#295545] text-[#fff] rounded-2xl"
+                onClick={() => {
+                  localStorage.removeItem("loginName");
+                  document.location.reload();
+                }}
+              >
+                EXIT
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="my-5 text-center font-bold text-lg">
+                Авторизуватись:
+              </div>
+              <LoginForm />
+              <div className="my-5 text-center font-bold text-lg">
+                Зареєструватись:
+              </div>
+              <RegistrationForm />
+            </>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
 export default LoginPage;

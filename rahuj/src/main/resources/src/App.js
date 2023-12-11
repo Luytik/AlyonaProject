@@ -14,11 +14,6 @@ import AboutUs from "./components/aboutus/aboutUsPage";
 import LoginPage from "./components/loginpage/logippage";
 
 import React, { createContext, useEffect, useState } from "react";
-import { observer } from "mobx-react-lite";
-import AuthStore from "./components/authtest/store";
-import PrivateRoute from "./components/authtest/privateRoute";
-import TestV from "./components/home/test/test";
-import TestV2 from "./components/home/test/testV2";
 
 /* const App = observer(() => {
   
@@ -58,8 +53,6 @@ function App() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/aboutus" element={<AboutUs />} />
 
-              <Route path="/login" element={<LoginPage />}></Route>
-
               {/* <Route path="/home" element={<PrivateRoute  />}>
                 <Route path="" element={<AddNewIncome />} />
                 <Route path=":id" element={<AddNewIncome />} />
@@ -68,12 +61,12 @@ function App() {
             <Route path="*" element={<div>404... not found </div>} /> */}
 
               <Route path="/home" element={<Home />}>
-                <Route index element={<HomeIndex />} />
+                {/* <Route index element={<HomeIndex />} /> */}
 
                 <Route path="/home/new_income" element={<AddNewIncome />} />
                 <Route path="/home/new_costs" element={<AddNewCosts />} />
                 <Route path="/home/new_statistics" element={<Statistics />} />
-                <Route path="/home/testtest" />
+                <Route index element={<LoginPage />} />
               </Route>
             </Routes>
           </Login.Provider>

@@ -2,15 +2,13 @@ import { Outlet } from "react-router-dom";
 import ButtonHome from "./listarea/buttonHome";
 import { useContext } from "react";
 import { Login } from "../../App";
-import LoginForm from "../loginpage/loginForm";
-import RegistrationForm from "../loginpage/registrationForm";
 
 function Home() {
   const homeBtn = [
     { name: "доходи", link: "/home/new_income" },
     { name: "витрати", link: "/home/new_costs" },
     { name: "статистика", link: "/home/new_statistics" },
-    { name: "login", link: "/login" },
+    { name: "login", link: "/home" },
     { name: "test", link: "/home/testtest" },
   ]; // дані для домашнього меню
   const listBtn = homeBtn.map((item, index) => (
@@ -28,23 +26,13 @@ function Home() {
         {login[0] ? (
           <nav className="flex gap-2 place-content-end">
             {listBtn}
-            {console.log(login[0])}
+            {/* {console.log(login[0])} */}
           </nav>
         ) : (
-          <p>для початку залогынтесь</p>
+          <p></p>
         )}
 
         <div className="">
-          <LoginForm />
-          <RegistrationForm />
-          <button
-            onClick={() => {
-              localStorage.removeItem("loginName");
-            }}
-          >
-            EXIT
-          </button>
-
           <Outlet />
         </div>
       </div>
